@@ -109,6 +109,8 @@ the input files sent by the sensors and copy them to the "normalized" folder.
 
 - "processed_files_mover" moves the input files to the "processed" folder.
 
+The source code for these components can be found [here](./pipeline).
+
 For the presentation layer, we have decided for Jupyter. The notebook uses data loaded into the Postgres
 database by the pipeline to do some data analysis.
 
@@ -136,8 +138,18 @@ our data that we can use to improve our pipeline.
 All the dependencies are available inside the requirements file:
 
 ```
-pip install -r requirements.txt
+pip install -r ./pipeline/requirements.txt
 ```
+
+## Running Tests
+
+The project includes unit tests:
+
+```
+pytest -s -v
+```
+
+TODO: Add Airflow unit tests. For future reference, testing documentation can be found [here](https://airflow.apache.org/docs/apache-airflow/stable/best-practices.html).
 
 ## Configuring Airflow 
 
