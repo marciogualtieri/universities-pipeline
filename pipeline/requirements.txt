@@ -1,0 +1,5 @@
+apache-airflow==2.0.1
+apache-airflow-providers-postgres==1.0.1
+wheel==0.36.2
+jupyter==1.0.0
+pandas-dedupe==1.4.0
