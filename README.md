@@ -113,9 +113,9 @@ For the presentation layer, we have decided for Jupyter. The notebook uses data 
 database by the pipeline to do some data analysis.
 
 Of course, we always have the option of creating a back-end and a correspondent front-end showing
-the most up-to-date statistics for the incoming data. That could be an option if we further developed the solution.
+the most up-to-date statistics for the incoming data. That could be an option if we further develop the solution.
 
-The rendered notebook with the results can be found [here](https://marciogualtieri.github.io/university-pipeline/jupyter/Universities%20Data%20Analysis.html). The original notebook can be found [here](../jupyter/Universities%20Data%20Analysis.ipynb).
+The rendered notebook with the results can be found [here](https://marciogualtieri.github.io/universities-pipeline/jupyter/Universities%20Data%20Analysis.html). The original notebook can be found [here](./jupyter/Universities%20Data%20Analysis.ipynb).
 
 This notebook includes some insights extracted from the data, such as:
 
@@ -127,7 +127,7 @@ It also includes all the ETL required, including de-duplication.
 
 It's important to comment that based on the data analysis, we could improve our pipeline to make the
 data even cleaner (for instance, we could have dealt with the de-duplication in the pipeline),
-but due to time constraints we have decided to use to Jupyter notebook. This represents the real 
+but due to time constraints we have decided to use the Jupyter notebook. This represents the real 
 day-to-day process, that is, usually we well get insights from the data analysis phase about
 our data that we can use to improve our pipeline.
 
@@ -141,7 +141,7 @@ pip install -r requirements.txt
 
 ## Configuring Airflow 
 
-That's is meant for development only. On production, we might use a cloud service such as AWS,
+That is meant for development only. On production, we might use a cloud service such as AWS,
 which makes [Airflow available in the cloud](https://aws.amazon.com/managed-workflows-for-apache-airflow/).
 
 For development purposes, we are setting up Airflow inside our project folder:
