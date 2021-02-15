@@ -20,16 +20,21 @@ class CustomBaseOperator(BaseOperator):
     @classmethod
     def _xcom_pull_flatten(cls, context, source_key, source_task_id):
         messages = context['task_instance'].xcom_pull(key=source_key, task_ids=source_task_id)
-        return cls._flatten_list(messages)
+        messages = cls._flatten_list(messages)
+        logger.info('XCOM pulled messages: %s', messages)
+        return messages
 
     @classmethod
     def _flatten_list(cls, values):
         result = []
+        if values is None:
+            return result
         for value in values:
             if isinstance(value, list):
                 result += cls._flatten_list(value)
             else:
-                result.append(value)
+                if value is not None:
+                    result.append(value)
         return result
 
     @abstractmethod
@@ -116,6 +121,7 @@ class CSVDatabaseLoader(CustomBaseOperator):
         hook = PostgresHook(postgres_conn_id=self.connection_id)
         engine = hook.get_sqlalchemy_engine()
         files = self._xcom_pull_flatten(context, 'output', self.source_task_id)
+        logger.info("Loading files %s into database", files)
         if not files:
             logger.info('No files to load.')
             return True

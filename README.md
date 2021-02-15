@@ -118,7 +118,7 @@ database by the pipeline to do some data analysis.
 Of course, we always have the option of creating a back-end and a correspondent front-end showing
 the most up-to-date statistics for the incoming data. That could be an option if we further develop the solution.
 
-The rendered notebook with the analysis can be found [here](https://marciogualtieri.github.io/universities-pipeline/jupyter/Universities%20Data%20Analysis.html). The original notebook can be found [here](./jupyter/Universities%20Data%20Analysis.ipynb).
+The rendered notebook with the analysis can be found [here](http://marciogualtieri.github.io/universities-pipeline/jupyter/Universities%20Data%20Analysis.html). The original notebook can be found [here](./jupyter/Universities%20Data%20Analysis.ipynb).
 
 This notebook includes some insights extracted from the data, such as:
 
