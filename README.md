@@ -4,6 +4,7 @@
 - [Universities Pipeline](#universities-pipeline)
   - [Overview](#overview)
   - [Installing Dependencies](#installing-dependencies)
+  - [Running Tests](#running-tests)
   - [Configuring Airflow](#configuring-airflow)
   - [Running Airflow](#running-airflow)
   - [Starting the Database Server](#starting-the-database-server)
@@ -139,6 +140,7 @@ All the dependencies are available inside the requirements file:
 
 ```
 pip install -r ./pipeline/requirements.txt
+pip install -r ./pipeline/dev-requirements.txt
 ```
 
 ## Running Tests
@@ -149,7 +151,27 @@ The project includes unit tests:
 pytest -s -v
 ```
 
-TODO: Add Airflow unit tests. For future reference, testing documentation can be found [here](https://airflow.apache.org/docs/apache-airflow/stable/best-practices.html).
+You should get an output similar to the following:
+
+```
+$ pytest -s -v
+======================================= test session starts ========================================
+platform linux -- Python 3.8.5, pytest-6.0.2, py-1.9.0, pluggy-0.13.1 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/franco/PycharmProjects/kheiron-medical/university-pipeline/pipeline
+collected 3 items                                                                                  
+
+tests/test_utils.py::TestUtils::test_to_csv_normalizer_from_csv_with_mapper PASSED
+tests/test_utils.py::TestUtils::test_to_csv_normalizer_from_csv_with_mapper_and_filter PASSED
+tests/test_utils.py::TestUtils::test_to_json_normalizer_from_json PASSED
+
+======================================== 3 passed in 1.09s =========================================
+```
+
+TODO: Add Airflow specific unit tests. At the moment, only the normalizers are being unit tested (a necessity due to their complexity).
+The Airflow sensors and operators were manually tested.
+
+For future reference, Airflow testing documentation can be found [here](https://airflow.apache.org/docs/apache-airflow/stable/best-practices.html).
 
 ## Configuring Airflow 
 
