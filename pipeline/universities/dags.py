@@ -1,18 +1,20 @@
-from airflow.operators.dummy import DummyOperator
 from datetime import timedelta
+from airflow.operators.dummy import DummyOperator
 import airflow
+from airflow.models import Variable
 
 from sensors import CustomFileSensor
 from operators import FromCSVToNormalizedCSVOperator, FromJSONToNormalizedCSVOperator
 from operators import FileMoverOperator, CSVDatabaseLoader
 import mapping_rules
 
-# TODO: Use Airflow configuration variables instead of hard-coded values
-INCOMING_FILES_PATH = '/tmp/incoming'
-NORMALIZED_FILES_PATH = '/tmp/normalized'
-PROCESSED_FILES_PATH = '/tmp/processed'
-CONNECTION_ID = 'universities'
-TABLE_NAME = 'raw_grades'
+configuration = Variable.get("universities_configuration", deserialize_json=True)
+INCOMING_FILES_PATH = configuration['filesystem']['incoming']
+NORMALIZED_FILES_PATH = configuration['filesystem']['normalized']
+PROCESSED_FILES_PATH = configuration['filesystem']['processed']
+CONNECTION_ID = configuration['database']['connection_id']
+TABLE_NAME = configuration['database']['table_name']
+
 
 default_args = {
     "depends_on_past": False,

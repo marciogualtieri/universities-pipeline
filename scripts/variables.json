@@ -1,0 +1,13 @@
+{
+    "universities_configuration": {
+        "database": {
+            "connection_id": "universities",
+            "table_name": "raw_grades"
+        },
+        "filesystem": {
+            "incoming": "/tmp/incoming",
+            "normalized": "/tmp/normalized",
+            "processed": "/tmp/processed"
+        }
+    }
+}
